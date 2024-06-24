@@ -1601,7 +1601,7 @@ input, select, textarea {
 
 		.image.featured {
   display: block;
-  width: 384px;   /* Set the desired width */
+  width: 100%;   /* Set the desired width */
   height: 304px;  /* Set the desired height */
   overflow: hidden;  /* Hide any overflow beyond specified dimensions */
 		}
