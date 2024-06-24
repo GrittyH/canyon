@@ -59,12 +59,12 @@
 				</div>
 
 			<!-- Main -->
-				  <div class="container">
+	<div class="container">
+	<div class="col-4 col-12-medium">
         <h2>Kontaktformular</h2>
         <form id="contactForm" action="https://formspree.io/f/mldrrwvv" method="POST">
-        <div class="col-4 col-12-medium"
-            
-                    <label for="name">Name*</label>
+          
+                    <label for="name">Names*</label>
                     <input type="text" id="name" name="name" required>
                
                     <label for="dates">Datum*</label>
@@ -94,13 +94,12 @@
                
                     <label for="phone">Telefonnummer*</label>
                     <input type="tel" id="phone" name="phone" required>
-            
-		            <label for="name">Nachricht*</label>
+		
+			<label for="name">Nachricht*</label>
                     <input type="text" id="nachricht" name="nachricht">
               
                     <button type="submit">Absenden</button>
-                </div>
-        
+                    
         </form>
         <div id="successMessage" class="message success hidden">Danke für eure Nachricht! Wir melden uns innerhalb 24h!</div>
         <div id="errorMessage" class="message error hidden">Es gab einen Fehler beim Senden Ihrer Nachricht. Bitte versuchen Sie es erneut.</div>
@@ -141,6 +140,8 @@
             });
         });
     </script>
+				  </div>
+		</div>
 			<!-- Footer -->
 <div id="footer-placeholder"></div>
 
