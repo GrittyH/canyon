@@ -1,0 +1,185 @@
+<!DOCTYPE HTML>
+<!--
+	Verti by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Canyoning Tours</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload homepage">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header-wrapper">
+					<header id="header" class="container">
+
+						<!-- Logo -->
+							<div id="logo">
+								<h1><a href="index.html">Canyoning</a></h1>
+							</div>
+
+						<!-- Nav -->
+							<nav id="nav">
+								<ul>
+									<li class="current"><a href="index.html">Willkomen</a></li>
+									<li><a href="salzburg.html">Salzburg</a></li>
+									<li><a href="oberoesterreich.html">Oberösterreich</a></li>
+									<li><a href="vorarlberg.html">Vorarlberg</a></li>
+									<li><a href="ausland.html">Ausland</a></li>
+								</ul>
+							</nav>
+
+					</header>
+				</div>
+
+			<!-- Banner -->
+				<div id="banner-wrapper">
+					<div id="banner" class="box container">
+						<div class="row">
+							<div class="col-7 col-12-medium">
+								<h2>Canyoning! </h2>
+								<p>tours im Salzburg, Oberösterreich, Voiraberg und im Ausland!</p>
+							</div>
+							<div class="col-5 col-12-medium">
+								<ul>
+									<li><a href="salzburg.html" class="button large icon solid fa-arrow-circle-right">Salzburg</a></li>
+									<li><a href="oberoesterreich.html" class="button large icon solid fa-arrow-circle-right">Oberösterreich</a></li>
+									<li><a href="vorarlberg.html" class="button large icon solid fa-arrow-circle-right">Voralrberg</a></li>
+									<li><a href="ausland.html" class="button large icon solid fa-arrow-circle-right">Ausland</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			<!-- Features -->
+				<div id="features-wrapper">
+					<div class="container">
+    <form id="contact-form" action="https://formspree.io/f/{your-form-id}" method="POST">
+        <div class="row">
+            <div class="col-12">
+                <label for="name">Name*</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="col-12">
+                <label for="date">Date(s)*</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+            <div class="col-12">
+                <label for="tour">Tour*</label>
+                <select id="tour" name="tour" required>
+                    <option value="Salzburg einsteiger">Salzburg einsteiger</option>
+                    <option value="Salzburg vortgeschrieten">Salzburg vortgeschrieten</option>
+                    <option value="Vorarlberg einsteiger">Vorarlberg einsteiger</option>
+                    <option value="Oberosterreich einsteiger">Oberosterreich einsteiger</option>
+                </select>
+            </div>
+            <div class="col-12">
+                <label for="persons">Number of persons</label>
+                <input type="number" id="persons" name="persons">
+            </div>
+            <div class="col-12">
+                <label for="email">Email*</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="col-12">
+                <label for="phone">Phone number</label>
+                <input type="tel" id="phone" name="phone">
+            </div>
+            <div class="col-12">
+                <button type="submit">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+document.getElementById('contact-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const form = event.target;
+    const data = new FormData(form);
+
+    fetch(form.action, {
+        method: form.method,
+        body: data,
+        headers: {
+            'Accept': 'application/json'
+        }
+    }).then(response => {
+        if (response.ok) {
+            alert('Thank you for your message!');
+            form.reset();
+        } else {
+            alert('Oops! There was a problem submitting your form');
+        }
+    }).catch(error => {
+        alert('Oops! There was a problem submitting your form');
+    });
+});
+</script>
+			<!-- Footer -->
+				<div id="footer-wrapper">
+					<footer id="footer" class="container">
+						<div class="row">
+							<div class="col-3 col-6-medium col-12-small">
+
+								<!-- Links -->
+									<section class="widget links">
+										<h3>Unsere Partners</h3>
+										<ul class="style2">
+											<li><a href="#">Salzburger Bergführerverband</a></li>
+											<li><a href="#">Sandiline</a></li>
+																					</ul>
+									</section>
+
+							</div>
+							
+							<div class="col-3 col-6-medium col-12-small">
+
+								<!-- Contact -->
+									<section class="widget contact last">
+										<h3>Kontaktiere Uns</h3>
+										<ul>
+		
+											<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+											<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+			
+										</ul>
+										<p>Canyoning Guide<br />
+										Salzburg<br />
+										00436766500000</p>
+									</section>
+
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-12">
+								<div id="copyright">
+									<ul class="menu">
+										<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</footer>
+				</div>
+
+			</div>
+
+		<!-- Scripts -->
+
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
