@@ -6,11 +6,54 @@
 -->
 <html>
 	<head>
-		<title>Canyoning Tours</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
+			   <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<title>Canyoning Tours</title>
+       <link rel="stylesheet" href="main.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        .container form {
+            display: flex;
+            flex-direction: column;
+        }
+        .container form .row {
+            margin-bottom: 15px;
+        }
+        .container form label {
+            margin-bottom: 5px;
+        }
+        .container form input,
+        .container form select,
+        .container form button {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .container form button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        .container form button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
 	<body class="is-preload homepage">
 		<div id="page-wrapper">
 
@@ -38,42 +81,40 @@
 				</div>
 
 			<!-- Main -->
-				<div id="main-wrapper">
+	
 <div class="container">
     <form id="contact-form" action="https://formspree.io/f/{your-form-id}" method="POST">
         <div class="row">
-            <div class="col-12">
-                <label for="name">Name*</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-            <div class="col-12">
-                <label for="date">Datum*</label>
-                <input type="date" id="date" name="date" required>
-            </div>
-            <div class="col-12">
-                <label for="tour">Tour*</label>
-                <select id="tour" name="tour" required>
-                    <option value="Salzburg einsteiger">Salzburg einsteiger</option>
-                    <option value="Salzburg vortgeschrieten">Salzburg vortgeschrieten</option>
-                    <option value="Vorarlberg einsteiger">Vorarlberg einsteiger</option>
-                    <option value="Oberosterreich einsteiger">Oberosterreich einsteiger</option>
-                </select>
-            </div>
-            <div class="col-12">
-                <label for="persons">Personen</label>
-                <input type="number" id="persons" name="persons">
-            </div>
-            <div class="col-12">
-                <label for="email">Email*</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="col-12">
-                <label for="phone">Phone Nummer</label>
-                <input type="tel" id="phone" name="phone">
-            </div>
-            <div class="col-12">
-                <button type="submit">Senden</button>
-            </div>
+            <label for="name">Name*</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="row">
+            <label for="date">Datum/Daten*</label>
+            <input type="date" id="date" name="date" required>
+        </div>
+        <div class="row">
+            <label for="tour">Tour*</label>
+            <select id="tour" name="tour" required>
+                <option value="Salzburg einsteiger">Salzburg Einsteiger</option>
+                <option value="Salzburg vortgeschrieten">Salzburg Fortgeschritten</option>
+                <option value="Vorarlberg einsteiger">Vorarlberg Einsteiger</option>
+                <option value="Oberosterreich einsteiger">Oberösterreich Einsteiger</option>
+            </select>
+        </div>
+        <div class="row">
+            <label for="persons">Anzahl der Personen</label>
+            <input type="number" id="persons" name="persons">
+        </div>
+        <div class="row">
+            <label for="email">E-Mail*</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="row">
+            <label for="phone">Telefonnummer</label>
+            <input type="tel" id="phone" name="phone">
+        </div>
+        <div class="row">
+            <button type="submit">Absenden</button>
         </div>
     </form>
 </div>
@@ -93,26 +134,15 @@ document.getElementById('contact-form').addEventListener('submit', function(even
         }
     }).then(response => {
         if (response.ok) {
-            alert('Danke, wir antworten im 24h!');
+            alert('Vielen Dank! Ihre Nachricht wurde gesendet.');
             form.reset();
         } else {
-            alert('Oops! Error');
+            alert('Oops! Es gab ein Problem beim Absenden des Formulars.');
         }
     }).catch(error => {
-        alert('Oops! Error');
+        alert('Oops! Es gab ein Problem beim Absenden des Formulars.');
     });
 });
-</script>
-			<!-- Footer -->
-<div id="footer-placeholder"></div>
-
-<script>
-    // Load footer using JavaScript
-    fetch('footer.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('footer-placeholder').innerHTML = data;
-        });
 </script>
 				</div>
 
