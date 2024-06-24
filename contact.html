@@ -10,15 +10,24 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
-		    <style>
-
-        .form-container {
-            width: 90%;
-            max-width: 600px;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            background: #fff;
-            border-radius: 8px;
+	  <style>
+        .hidden {
+            display: none;
+        }
+        .message {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
         }
     </style>
 	</head>
@@ -50,70 +59,91 @@
 				</div>
 
 			<!-- Main -->
-				<div class="container">
-    <form id="form-container" action="https://formspree.io/f/mldrrwvv" method="POST">
-        <div class="row">
-            <label for="name">Name*</label>
-            <input type="text" id="name" name="name" required>
-        </div>
-        <div class="row">
-            <label for="date">Datum/Daten*</label>
-            <input type="date" id="date" name="date" required>
-        </div>
-        <div class="row">
-            <label for="tour">Tour*</label>
-            <select id="tour" name="tour" required>
-                <option value="Salzburg einsteiger">Salzburg Einsteiger</option>
-                <option value="Salzburg vortgeschrieten">Salzburg Fortgeschritten</option>
-                <option value="Vorarlberg einsteiger">Vorarlberg Einsteiger</option>
-                <option value="Oberosterreich einsteiger">Oberösterreich Einsteiger</option>
-            </select>
-        </div>
-        <div class="row">
-            <label for="persons">Anzahl der Personen</label>
-            <input type="number" id="persons" name="persons">
-        </div>
-        <div class="row">
-            <label for="email">E-Mail*</label>
-            <input type="email" id="email" name="email" required>
-        </div>
-        <div class="row">
-            <label for="phone">Telefonnummer</label>
-            <input type="tel" id="phone" name="phone">
-        </div>
-        <div class="row">
-            <button type="submit">Absenden</button>
-        </div>
-    </form>
-</div>
+				  <div class="container">
+        <h2>Kontaktformular</h2>
+        <form id="contactForm" action="https://formspree.io/f/mldrrwvv" method="POST">
+            <div class="row">
+                <div class="col-12">
+                    <label for="name">Name*</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="col-12">
+                    <label for="dates">Datum(e)*</label>
+                    <input type="text" id="dates" name="dates" required>
+                </div>
+                <div class="col-12">
+                    <label for="tour">Tour*</label>
+                    <select id="tour" name="tour" required>
+                        <option value="Salzburg einsteiger">Salzburg einsteiger</option>
+                        <option value="Salzburg fortgeschritten">Salzburg fortgeschritten</option>
+                        <option value="Vorarlberg einsteiger">Vorarlberg einsteiger</option>
+                        <option value="Oberösterreich einsteiger">Oberösterreich einsteiger</option>
+                    </select>
+                </div>
+                <div class="col-12">
+                    <label for="persons">Anzahl der Personen*</label>
+                    <select id="persons" name="persons" required>
+                        <option value="" disabled selected>Anzahl der Personen</option>
+                        <!-- Generating options from 1 to 12 -->
+                        <script>
+                            for (let i = 1; i <= 12; i++) {
+                                document.write(`<option value="${i}">${i}</option>`);
+                            }
+                        </script>
+                    </select>
+                </div>
+                <div class="col-12">
+                    <label for="email">Email*</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="col-12">
+                    <label for="phone">Telefonnummer*</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="col-12">
+                    <button type="submit">Absenden</button>
+                </div>
+            </div>
+        </form>
+        <div id="successMessage" class="message success hidden">Ihre Nachricht wurde erfolgreich gesendet.</div>
+        <div id="errorMessage" class="message error hidden">Es gab einen Fehler beim Senden Ihrer Nachricht. Bitte versuchen Sie es erneut.</div>
+    </div>
 
-<script>
-document.getElementById('contact-form').addEventListener('submit', function(event) {
-    event.preventDefault();
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const form = event.target;
+            const formData = new FormData(form);
 
-    const form = event.target;
-    const data = new FormData(form);
-
-    fetch(form.action, {
-        method: form.method,
-        body: data,
-        headers: {
-            'Accept': 'application/json'
-        }
-    }).then(response => {
-        if (response.ok) {
-            alert('Vielen Dank! Ihre Nachricht wurde gesendet.');
-            form.reset();
-        } else {
-            alert('Oops! Es gab ein Problem beim Absenden des Formulars.');
-        }
-    }).catch(error => {
-        alert('Oops! Es gab ein Problem beim Absenden des Formulars.');
-    });
-});
-</script>
-
-
+            fetch(form.action, {
+                method: form.method,
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    document.getElementById('successMessage').classList.remove('hidden');
+                    document.getElementById('errorMessage').classList.add('hidden');
+                    form.reset();
+                } else {
+                    response.json().then(data => {
+                        if (Object.hasOwnProperty.call(data, 'errors')) {
+                            document.getElementById('errorMessage').innerText = data["errors"].map(error => error["message"]).join(", ");
+                        } else {
+                            document.getElementById('errorMessage').innerText = 'Es gab einen Fehler beim Senden Ihrer Nachricht. Bitte versuchen Sie es erneut.';
+                        }
+                        document.getElementById('errorMessage').classList.remove('hidden');
+                        document.getElementById('successMessage').classList.add('hidden');
+                    });
+                }
+            }).catch(error => {
+                document.getElementById('errorMessage').innerText = 'Es gab einen Fehler beim Senden Ihrer Nachricht. Bitte versuchen Sie es erneut.';
+                document.getElementById('errorMessage').classList.remove('hidden');
+                document.getElementById('successMessage').classList.add('hidden');
+            });
+        });
+    </script>
 			<!-- Footer -->
 <div id="footer-placeholder"></div>
 
