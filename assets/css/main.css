@@ -1600,9 +1600,10 @@ input, select, textarea {
 		}
 
 		.image.featured {
-			display: block;
-			width: 100%;
-			margin: 0 0 2.5em 0;
+  display: block;
+  width: 384px;   /* Set the desired width */
+  height: 304px;  /* Set the desired height */
+  overflow: hidden;  /* Hide any overflow beyond specified dimensions */
 		}
 
 		.image.left {
