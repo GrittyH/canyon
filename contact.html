@@ -62,25 +62,22 @@
 				  <div class="container">
         <h2>Kontaktformular</h2>
         <form id="contactForm" action="https://formspree.io/f/mldrrwvv" method="POST">
-            <div class="row">
-                <div class="col-12">
+        <div class="col-4 col-12-medium"
+            
                     <label for="name">Name*</label>
                     <input type="text" id="name" name="name" required>
-                </div>
-                <div class="col-12">
-                    <label for="dates">Datum(e)*</label>
-                    <input type="text" id="dates" name="dates" required>
-                </div>
-                <div class="col-12">
-                    <label for="tour">Tour*</label>
-                    <select id="tour" name="tour" required>
-                        <option value="Salzburg einsteiger">Salzburg einsteiger</option>
-                        <option value="Salzburg fortgeschritten">Salzburg fortgeschritten</option>
-                        <option value="Vorarlberg einsteiger">Vorarlberg einsteiger</option>
-                        <option value="Oberösterreich einsteiger">Oberösterreich einsteiger</option>
-                    </select>
-                </div>
-                <div class="col-12">
+               
+                    <label for="dates">Datum*</label>
+                    <input type="date" id="dates" name="dates" required>
+              
+                    <label for="tour">Tour</label>
+                    <select id="tour" name="tour">
+          	  <option value="Salzburg einsteiger">Salzburg Einsteiger</option>
+                <option value="Salzburg vortgeschrieten">Salzburg Fortgeschritten</option>
+                <option value="Vorarlberg einsteiger">Vorarlberg Einsteiger</option>
+                <option value="Oberosterreich einsteiger">Oberösterreich Einsteiger</option>
+            </select>
+              
                     <label for="persons">Anzahl der Personen*</label>
                     <select id="persons" name="persons" required>
                         <option value="" disabled selected>Anzahl der Personen</option>
@@ -91,21 +88,21 @@
                             }
                         </script>
                     </select>
-                </div>
-                <div class="col-12">
+              
                     <label for="email">Email*</label>
                     <input type="email" id="email" name="email" required>
-                </div>
-                <div class="col-12">
+               
                     <label for="phone">Telefonnummer*</label>
                     <input type="tel" id="phone" name="phone" required>
-                </div>
-                <div class="col-12">
+            
+		            <label for="name">Nachricht*</label>
+                    <input type="text" id="nachricht" name="nachricht">
+              
                     <button type="submit">Absenden</button>
                 </div>
-            </div>
+        
         </form>
-        <div id="successMessage" class="message success hidden">Ihre Nachricht wurde erfolgreich gesendet.</div>
+        <div id="successMessage" class="message success hidden">Danke für eure Nachricht! Wir melden uns innerhalb 24h!</div>
         <div id="errorMessage" class="message error hidden">Es gab einen Fehler beim Senden Ihrer Nachricht. Bitte versuchen Sie es erneut.</div>
     </div>
 
